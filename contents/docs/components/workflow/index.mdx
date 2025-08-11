@@ -1,0 +1,32 @@
+---
+title: GenericWorkflow
+description: This section provides an overview of the GenericWorkflow component
+---
+
+## Definition
+
+**Interface**
+
+`GenericWorkflow` is an interface providing a generic implementation of
+an event-driven workflow. Every struct representing a workflow should
+implement the `GenericWorkflow` interface.
+
+A workflow should be composed of steps, functions that take a `GenericEvent` and `GenericContext` as arguments: these steps should be in some way associated with strings representing their names.
+
+**Methods**
+
+- `TakeStep`: Allows separate execution of single steps. It executes a step by selecting it with its name and passing a `GenericEvent` and a `GenericContext` to it.
+- `Validate`: Ensures that the structure of the workflow is correct.
+- `Run`: Runs the workflow until completion. It takes an input event and an initial context, as well as three callback functions: for when an event starts being processed, for when a new event is emitted, and for the workflow output.
+- `Output`: Runs at the end of the workflow and returns the actual workflow output.
+
+## Source Code
+
+```go
+type GenericWorkflow interface {
+	TakeStep(string, *GenericEvent, *GenericContext) *BaseEvent
+	Validate() bool
+	Run(*GenericEvent, *GenericContext, func(*GenericEvent), func(*GenericEvent), func(any))
+	Output(*GenericEvent, *GenericContext) any
+}
+```

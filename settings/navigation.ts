@@ -7,11 +7,15 @@ export const Navigations = [
   },
   {
     title: "Home",
-    href: "https://rubixstudios.com.au",
+    href: "https://workflows-go.org",
     external: true,
   },
 ]
 
 export const GitHubLink = {
-  href: "https://github.com/rubixvi/rubix-documents",
+  href: "https://github.com/AstraBert/workflows-go",
+}
+
+export const GitHubLinkDocs = {
+  href: "https://github.com/AstraBert/workflows-go-docs",
 }

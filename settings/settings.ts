@@ -1,25 +1,25 @@
-export const url = "https://rubix-documents.vercel.app"
+export const url = "https://docs.workflows-go.org"
 export const siteicon = "/icon.png"
 
 export const gtm = "GTM-XXXXXXX"
 export const gtmconnected = true
 
-export const sitename = "Documents"
+export const sitename = "workflows-go"
 export const description =
-  "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements."
+  "workflows-go is a package that implements event-driven workflows in Go: it was designed to build AI applications and intelligent automation leveraging the scalability and the velocity of Go."
 export const keywords = [
-  "Next.js",
-  "documentation",
-  "Rubix Studios",
+  "workflows",
+  "event-driven",
+  "AI-development",
   "open source",
-  "SEO",
+  "Go",
 ]
 export const urlimage = "/images/og-image.png"
-export const imagealt = "Rubix Studios Documentation"
-export const twitterhandle = "@RubixStudios"
+export const imagealt = "workflows-go documentation"
+export const twitterhandle = "@itsclelia"
 
-export const companyname = "Rubix Studios"
-export const companylink = "https://rubixstudios.com.au"
+export const companyname = "workflows-go"
+export const companylink = "https://workflows-go.org"
 
 export const branding = true
 export const rightsidebar = true

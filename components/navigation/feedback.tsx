@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { GitHubLink } from "@/settings/navigation"
+import { GitHubLinkDocs } from "@/settings/navigation"
 import { LuArrowUpRight } from "react-icons/lu"
 
 import { cn } from "@/lib/utils"
@@ -10,8 +10,8 @@ type SideBarEdit = {
 }
 
 export default function RightSideBar({ slug, title }: SideBarEdit) {
-  const feedbackUrl = `${GitHubLink.href}/issues/new?title=Feedback for "${title}"&labels=feedback`
-  const editUrl = `${GitHubLink.href}/edit/main/contents/docs/${slug}/index.mdx`
+  const feedbackUrl = `${GitHubLinkDocs.href}/issues/new?title=Feedback for "${title}"&labels=feedback`
+  const editUrl = `${GitHubLinkDocs.href}/edit/main/contents/docs/${slug}/index.mdx`
 
   return (
     <div className="flex flex-col gap-3 pl-2">

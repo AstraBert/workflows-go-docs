@@ -1,0 +1,18 @@
+---
+title: Components 
+description: This section explores the components of the workflows-go package
+---
+
+## Introduction
+
+There are three main components of **workflows-go**:
+
+- [Workflows](./workflow/index.mdx): the main abstraction for running event-driven workflows.
+- [Events](./event/index.mdx): the triggers for workflow steps, they are designed to carry information between one step and the following one.
+- [Context](./context/index.mdx): a general-purpose storage unit, it provides long-term persinstency and statefulness to the workflow itself.
+
+For these components, the following design patterns were chosen:
+
+- **Workflows** are designed to be stepwise, meaning that they can execute one step at a time, but they should also provide a method for running them to completion, as well as an output method.
+-  **Events** are designed to be data carriers, so they mostly behave as maps/short-lived database tables.
+- **Context** is the most database-like component: it can perform read and write operations towards a persistent storage unit (the *store*) and fetch/set operations on the stateful unit (the *state*).

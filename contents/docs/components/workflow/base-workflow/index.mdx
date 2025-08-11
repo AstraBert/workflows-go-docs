@@ -1,0 +1,85 @@
+---
+title: BaseWorkflow
+description: This section provides an overview of the BaseWorkflow component
+---
+
+## Definition
+
+**Structure**
+
+`BaseWorkflow` offers a base implementation of `GenericWorkflow`.
+
+**Methods**
+
+- `Validate` checks that the steps in the workflow are not named with 'end', a keyword reserved for the name of the output step.
+- `TakeStep` allows separate execution single steps by calling them with their name.
+- `Run` runs the workflow through completion.
+- `Output` produces the output of the workflow.
+
+**Constructor**
+
+`NewBaseWorkflow` creates a new BaseWorkflow instance starting from the definition of the first step, a context instance and a map that represents steps.
+
+## Source Code
+
+```go
+type BaseWorkflow struct {
+	FirstStep string
+	Context   *BaseContext
+	Steps     map[string]func(*BaseEvent, *BaseContext) *BaseEvent
+}
+
+func (wf *BaseWorkflow) Validate() (bool, error) {
+	for k := range wf.Steps {
+		if k == "end" {
+			return false, errors.New("`end` is a reserved keyword, you cannot use it as a name for your steps")
+		}
+	}
+	return true, nil
+}
+
+func (wf *BaseWorkflow) TakeStep(stepName string, ev *BaseEvent, ctx *BaseContext) *BaseEvent {
+	step, ok := wf.Steps[stepName]
+	if !ok {
+		var data map[string]string = map[string]string{
+			"output": fmt.Sprintf("There was an error while executing step %s: the step does not exist", stepName),
+		}
+		return NewBaseEvent("end", data)
+	} else {
+		return step(ev, ctx)
+	}
+}
+
+func (wf *BaseWorkflow) Run(inputEvent *BaseEvent, context *BaseContext, onEventStartCallBack func(*BaseEvent), onEventEndCallBack func(*BaseEvent), onOutputCallBack func(any)) {
+	event := wf.TakeStep(wf.FirstStep, inputEvent, context)
+	for {
+		onEventStartCallBack(event)
+		if event.NextStep == "end" {
+			output := wf.Output(event, context)
+			onOutputCallBack(output)
+			break
+		}
+		event = wf.TakeStep(event.NextStep, event, context)
+		onEventEndCallBack(event)
+	}
+}
+
+func (wf *BaseWorkflow) Output(ev *BaseEvent, ctx *BaseContext) any {
+	if ev.NextStep == "end" {
+		output, ok := ev.Get("output")
+		if ok {
+			return output
+		}
+		return "No output produced"
+	}
+	return "Not an output step"
+}
+
+func NewBaseWorkflow(firstStep string, ctx *BaseContext, steps map[string]func(*BaseEvent, *BaseContext) *BaseEvent) *BaseWorkflow {
+	return &BaseWorkflow{
+		FirstStep: firstStep,
+		Context:   ctx,
+		Steps:     steps,
+	}
+}
+```

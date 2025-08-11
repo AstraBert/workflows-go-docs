@@ -1,97 +1,59 @@
 export const Documents = [
-    {
-        heading: "Introduction",
-        title: "Basic Setup",
-        href: "/basic-setup",
+  {
+    heading: "workflows-go Documentation",
+    href: "#",
+    title: "",
+  },
+  {
+    spacer: true,
+  },
+  {
+    heading: "Introduction",
+    title: "What and why",
+    href: "/introduction",
+  },
+  {
+    spacer: true,
+  },
+  {
+    title: "",
+    href: "/getting-started",
+    heading: "Getting Started",
+  },
+  {
+    title: "Components",
+    href: "/components",
+    items: [
+      {
+        title: "GenericEvent",
+        href: "/event",
         items: [
-            {
-                title: "Installation",
-                href: "/installation",
-            },
-            {
-                title: "Setup",
-                href: "/setup",
-            },
-            {
-                title: "Changelog",
-                href: "/changelog",
-            },
+          {
+            title: "BaseEvent",
+            href: "/base-event",
+          },
         ],
-    },
-    {
-        spacer: true,
-    },
-    {
-        title: "Navigation",
-        href: "/navigation",
-        heading: "Documents",
-    },
-    {
-        title: "Structure",
-        href: "/structure",
+      },
+      {
+        title: "GenericContext",
+        href: "/context",
         items: [
-            {
-                title: "Deep",
-                href: "/deep",
-                items: [
-                    {
-                        title: "Deeper",
-                        href: "/deeper",
-                        items: [
-                            {
-                                title: "Even deeper",
-                                href: "/even-deeper",
-                            },
-                        ],
-                    },
-                ],
-            },
+          {
+            title: "BaseContext",
+            href: "/base-context",
+          },
         ],
-    },
-    {
-        spacer: true,
-    },
-    {
-        title: "Markdown",
-        href: "/markdown",
-        heading: "Components",
+      },
+      {
+        title: "GenericWorkflow",
+        href: "/workflow",
         items: [
-            {
-                title: "Cards",
-                href: "/cards",
-            },
-            {
-                title: "Diagrams",
-                href: "/diagrams",
-            },
-            {
-                title: "Filetree",
-                href: "/filetree",
-            },
-            {
-                title: "Lists",
-                href: "/lists",
-            },
-            {
-                title: "Maths",
-                href: "/maths",
-            },
-            {
-                title: "Notes",
-                href: "/notes",
-            },
-            {
-                title: "Steps",
-                href: "/steps",
-            },
-            {
-                title: "Table",
-                href: "/table",
-            },
-            {
-                title: "Tabs",
-                href: "/tabs",
-            },
+          {
+            title: "BaseWorkflow",
+            href: "/base-workflow",
+          },
         ],
-    },
+      },
+    ],
+  },
 ];

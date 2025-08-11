@@ -1,0 +1,39 @@
+---
+title: BaseEvent
+description: This section provides an overview of the BaseEvent component
+---
+
+## Definition
+
+**Structure**
+
+`BaseEvent` is a base implementation of the GenericEvent: it comes with `NextStep` (string) and `Data` (map) as attributes where the key information is stored.
+
+**Methods**
+
+- `Get` is a method of `BaseEvent` that fetches data stored within an `BaseEvent.Data`, and returns that data.
+
+**Constructor**
+
+`NewBaseEvent` is a constructor function that, given a string representing the name of the following step and a map containing data, returns a `BaseEvent`.
+
+## Source Code
+
+```go
+type BaseEvent struct {
+	NextStep string
+	Data     map[string]string
+}
+
+func (ev *BaseEvent) Get(key string) (val any, success bool) {
+	val, success = ev.Data[key]
+	return
+}
+
+func NewBaseEvent(followingStep string, data map[string]string) *BaseEvent {
+	return &BaseEvent{
+		Data:     data,
+		NextStep: followingStep,
+	}
+}
+```

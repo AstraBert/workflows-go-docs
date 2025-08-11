@@ -1,0 +1,28 @@
+---
+title: GenericContext
+description: This section provides an overview of the GenericContext component
+---
+
+## Definition
+
+**Interface**
+
+`GenericContext` is the interface representing a context, i.e. a storage space that is aimed at allowing persistency and stefulness for workflow executions. All structures representing a workflow context should implement this interface.
+
+**Methods**
+
+- `StoreValue` is aimed at persistant storage of a key-value pair.
+- `GetValue` retrieves the value associated with a key within the persistent storage
+- `GetState` retrieves the in-BaseContext state of the workflow run.
+- `SetState` allows to set a new state within the BaseContext.
+
+## Source Code
+
+```go 
+type GenericContext interface {
+	StoreValue(string, any)
+	GetValue(string) (any, bool)
+	GetState() map[string]any
+	SetState(map[string]any)
+}
+```

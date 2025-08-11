@@ -1,0 +1,22 @@
+---
+title: GenericEvent
+description: This section provides an overview of the GenericEvent component
+---
+
+## Definition
+
+**Interface**
+
+`GenericEvent` is an interface that must be implemented by all structures representing events if they want to be considered as correct input/output for a workflow.
+
+**Methods**
+
+- `Get` is a function that fetches data stored within an Event, and returns that data. Data should be stored with strings as keys.
+
+## Source Code
+
+```go
+type GenericEvent interface {
+	Get(string) (any, bool)
+}
+```

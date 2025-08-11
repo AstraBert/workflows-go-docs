@@ -1,0 +1,56 @@
+---
+title: BaseContext
+description: This section provides an overview of the BaseContext component
+---
+
+## Definition
+
+**Structure**
+
+`BaseContext` is a base implementation of the `GenericContext` implementation.
+
+It comes with a `Store` (persistent storage), which is a map and a `State` (stateful execution) which also is a map.
+
+**Methods**
+
+- `StoreValue` stores a key-value pair in `BaseContext.Store`.
+- `GetValue` fetches the value associated with a key in `BaseContext.Store`.
+- `GetState` fetches `BaseContext.State`.
+- `SetState` assigns a value to `BaseContext.State`.
+
+**Constructor**
+
+`NewBaseContext` is a constructor that, starting from a map representing the `Store` and one representing the `State`, returns a BaseContext.
+
+## Source Code
+
+```go
+type BaseContext struct {
+	Store map[string]any
+	State map[string]any
+}
+
+func NewBaseContext(store, state map[string]any) *BaseContext {
+	return &BaseContext{
+		Store: store,
+		State: state,
+	}
+}
+
+func (ctx *BaseContext) StoreValue(key string, val any) {
+	ctx.Store[key] = val
+}
+
+func (ctx *BaseContext) GetValue(key string) (val any, success bool) {
+	val, success = ctx.Store[key]
+	return
+}
+
+func (ctx *BaseContext) GetState() map[string]any {
+	return ctx.State
+}
+
+func (ctx *BaseContext) SetState(state map[string]any) {
+	ctx.State = state
+}
+```
