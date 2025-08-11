@@ -1,59 +1,51 @@
 export const Documents = [
-  {
-    heading: "workflows-go Documentation",
-    href: "#",
-    title: "",
-  },
-  {
-    spacer: true,
-  },
-  {
-    heading: "Introduction",
-    title: "What and why",
-    href: "/introduction",
-  },
-  {
-    spacer: true,
-  },
-  {
-    title: "",
-    href: "/getting-started",
-    heading: "Getting Started",
-  },
-  {
-    title: "Components",
-    href: "/components",
-    items: [
-      {
-        title: "GenericEvent",
-        href: "/event",
+    {
+        heading: "Introduction",
+        title: "What and why",
+        href: "/introduction",
+    },
+    {
+        spacer: true,
+    },
+    {
+        title: "",
+        href: "/getting-started",
+        heading: "Getting Started",
+    },
+    {
+        title: "Components",
+        href: "/components",
         items: [
-          {
-            title: "BaseEvent",
-            href: "/base-event",
-          },
+            {
+                title: "GenericEvent",
+                href: "/event",
+                items: [
+                    {
+                        title: "BaseEvent",
+                        href: "/base-event",
+                    },
+                ],
+            },
+            {
+                title: "GenericContext",
+                href: "/context",
+                items: [
+                    {
+                        title: "BaseContext",
+                        href: "/base-context",
+                    },
+                ],
+            },
+            {
+                title: "GenericWorkflow",
+                href: "/workflow",
+                items: [
+                    {
+                        title: "BaseWorkflow",
+                        href: "/base-workflow",
+                    },
+                ],
+            },
         ],
-      },
-      {
-        title: "GenericContext",
-        href: "/context",
-        items: [
-          {
-            title: "BaseContext",
-            href: "/base-context",
-          },
-        ],
-      },
-      {
-        title: "GenericWorkflow",
-        href: "/workflow",
-        items: [
-          {
-            title: "BaseWorkflow",
-            href: "/base-workflow",
-          },
-        ],
-      },
-    ],
-  },
+    },
 ];
